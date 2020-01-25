@@ -1,6 +1,6 @@
 # ============================================================================
-# FILE: defx/drive.py
-# AUTHOR: Shougo Matsushita <Shougo.Matsu at gmail.com>
+# FILE: bookmark.py
+# AUTHOR: 
 # License: MIT license
 # ============================================================================
 
