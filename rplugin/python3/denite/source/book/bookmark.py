@@ -7,25 +7,21 @@
 import typing
 import os
 from denite.source.base import Base
-# from defx.util import Nvim, UserContext, Candidates
-from denite.util import globruntime, Nvim, UserContext, Candidates
-# from denite.source.file import Source as File
-# from denite.base.source import Base
-# from .base import Base
+from denite.util import Nvim, UserContext, Candidates
 
 class Source(Base):
 
     def __init__(self, vim: Nvim) -> None:
         super().__init__(vim)
 
-        self.name = 'book/bookmark'
+        self.name = 'k/bookmark'
         self.kind = 'command'
         self._bookmark: typing.List[str] = []
 
     def on_init(self, context: UserContext) -> None:
 
-        path_text = self.vim.vars['denite#bookmark_info']
-        with open(path_text) as f:
+        text_path = self.vim.vars['denite#bookmark_info']
+        with open(text_path) as f:
             self._bookmark= f.read().splitlines()
 
     def gather_candidates(self, context: UserContext) -> Candidates:
