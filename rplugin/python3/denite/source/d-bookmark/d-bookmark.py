@@ -14,7 +14,7 @@ class Source(Base):
     def __init__(self, vim: Nvim) -> None:
         super().__init__(vim)
 
-        self.name = 'k/bookmark'
+        self.name = 'd-bookmark'
         self.kind = 'command'
         self._bookmark: typing.List[str] = []
 
@@ -32,8 +32,8 @@ class Source(Base):
             if os.path.isdir(x):
                 result_list.append({
                     'word': x,
-                    'abbr': x + '/',
-                    'action__command': f"Defx " + x,
+                    'abbr': x,
+                    'action__command': f"Defx " + x.replace('\\','\\\\'),
                     'action__path': x
                 })
             elif os.path.isfile(x):
@@ -45,6 +45,3 @@ class Source(Base):
                 })
 
         return result_list
-
-
-
